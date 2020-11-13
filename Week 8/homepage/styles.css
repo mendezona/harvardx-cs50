@@ -1,0 +1,22 @@
+.headerImagePointGuards
+{
+    background: url("https://media.foxbusiness.com/BrightCove/854081161001/202003/1164/854081161001_6141442585001_6141440893001-vs.jpg");
+    border: 2px solid black;
+}
+
+.pageTitle
+{
+    text-align: center;
+    font-size: 300%;
+    padding: 50px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.tableOfContents
+{
+    text-align: center;
+    padding: 20px;
+}
+

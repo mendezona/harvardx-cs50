@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Symbol</th>
+          <th scope="col">Name</th>
+          <th scope="col">Shares</th>
+          <th scope="col">Price</th>
+          <th scope="col">Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for stocks in history %}
+            <tr>
+              <th scope="row">{{ stocks["symbol"] }}</th>
+              <td>{{ stocks["name"] }}</td>
+              <td>{{ stocks["quantity"] }}</td>
+              <td>${{ stocks["price"] }}</td>
+              <td>{{ stocks["time"] }}</td>
+            </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}
