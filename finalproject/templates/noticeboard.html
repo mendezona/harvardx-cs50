@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Noticeboard
+{% endblock %}
+
+{% block top %}
+    <h1 class="display-3 text-light">Community noticeboard</h1>
+        <p>Seeking to connect likeminded fellow hoopers with the goal of improving your game and having fun.</p>
+{% endblock %}
+
+{% block main %}
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">User</th>
+          <th scope="col">Seeking</th>
+          <th scope="col">Availability</th>
+          <th scope="col">Message</th>
+          <th scope="col">Time of post</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for message in messages %}
+        <tr>
+          <th scope="row">{{ message["username"] }}</th>
+          <td>{{ message["seeking"] }}</td>
+          <td>{{ message["availability"] }}</td>
+          <td colspan>{{ message["message"] }}</td>
+          <td>{{ message["time"] }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    <div class="col-md-4">
+        <h2>Write a post</h2>
+        <form action="/noticeboard" method="post">
+          <div class="form-group row">
+            <label for="from" class="col-sm-2 col-form-label">From:</label>
+            <div class="col-sm-10">
+              {% if session.user_id %}
+              <input type="text" readonly class="form-control-plaintext" id="from" value={{ session["username"] }}>
+              {% else %}
+              <input type="text" readonly class="form-control-plaintext" id="from" value="Anonymous">
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="seeking">Seeking to:</label>
+            <select class="form-control" input id="seeking" name="seeking">
+              <option>Practice shooting/help with rebounding</option>
+              <option>Practice one on one skills</option>
+              <option>Seeking group basketball</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="availability">Time available:</label>
+            <select class="form-control" input id="availability" name="availability">
+              <option>This afternoon</option>
+              <option>This evening</option>
+              <option>Tomorrow morning</option>
+              <option>Tomorrow midday</option>
+              <option>Tomorrow afternoon</option>
+              <option>Tomorrow evening</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea class="form-control" input id="message" name="message" type="text" placeholder="Write message (optional)" rows="3"></textarea>
+          </div>
+          <input id="submit" button class="btn btn-primary" type="submit">
+        </form>
+
+    </div>
+  </div>
+{% endblock %}

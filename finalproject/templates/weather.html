@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Weather
+{% endblock %}
+
+{% block top %}
+    <h1 class="display-3 text-light">Weather update</h1>
+        <p>Your sideline weather report, with outdoor basketball front of mind.</p>
+{% endblock %}
+
+{% block main %}
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="row">
+    <div class="col-md-4">
+      {% if 'rain' not in weather["current"] and 'storm' not in weather["current"] %}
+        <img class="checkEmoji" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/118/ok-hand-sign_1f44c.png">
+      {% else %}
+        <img class="checkEmoji" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/48/thinking-face_1f914.png">
+      {% endif %}
+    </div>
+    <div class="col-md-4">
+      {% if weather["futureRain"] < 30 %}
+        <img class="checkEmoji" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/118/ok-hand-sign_1f44c.png">
+      {% else %}
+        <img class="checkEmoji" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/48/thinking-face_1f914.png">
+      {% endif %}
+    </div>
+    <div class="col-md-4">
+      {% if weather["wind_speed"] < 15 %}
+        <img class="checkEmoji" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/118/ok-hand-sign_1f44c.png">
+      {% else %}
+        <img class="checkEmoji" src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/apple/48/thinking-face_1f914.png">
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Current forecast</h2>
+        <p>The current forecast is calling for {{ weather["current"] }}, with tempreatures feeling like {{ weather["feels_like"] }} degrees. Sunset will be at {{ weather["sunset"].hour }}:{{ weather["sunset"].minute }} today, approximately {{ sunsetNow }} hour/s from now.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Rain check</h2>
+          <p>There is a {{ weather["futureRain"] }}% probability of raining in the next hour.</p>
+    </div>
+    <div class="col-md-4">
+      <h2>Wind conditions</h2>
+        <p>The winds are currently {{ weather["wind_speed"] }}km/h. Anything below 10km/h is ideal, with 15km/h calling for more missed shots.</p>
+    </div>
+  </div>
+
+{% endblock %}

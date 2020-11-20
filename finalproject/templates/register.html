@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Player registration
+{% endblock %}
+
+{% block top %}
+    <h1 class="display-3 text-light">Player registration</h1>
+        <p>Sign up for a more personalised experience, no try outs required!</p>
+{% endblock %}
+
+{% block main %}
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form action="/register" method="post">
+              <div class="form-group">
+                <label for="Username">Username</label>
+                <input id= "username" input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+                <small id="usernameError" class="form-text text-danger">Username already taken, please try another</small>
+              </div>
+              <div class="form-group">
+                <label for="Password">Password</label>
+                <input id= 'password' input class="form-control" name="password" placeholder="Password" type="password">
+              </div>
+              <div class="form-group">
+                <label for="Confirm password">Confirm password</label>
+                <input id='confirmPassword' input class="form-control" name="confirmPassword" placeholder="Confirm password" type="password">
+              </div>
+              <input id="submit" button class="btn btn-primary" type="submit" disabled></button>
+            </form>
+        </div>
+    </div>
+
+  <script>
+    // password check
+        document.querySelector('#confirmPassword').onkeyup = function() {
+              if (document.querySelector('#password').value === document.querySelector('#confirmPassword').value) {
+                  document.querySelector('#submit').disabled = false;
+              } else {
+                  document.querySelector('#submit').disabled = true;
+              }
+          }
+
+    //error message if username already taken
+        var error = '{{ error }}'
+        if (error == 'usernameTaken') {
+          document.getElementById("usernameError").style.display = "block";
+          } else {
+            document.getElementById("usernameError").style.display = "none";
+          }
+  </script>
+{% endblock %}

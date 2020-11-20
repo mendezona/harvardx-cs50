@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Welcome.
+{% endblock %}
+
+{% block top %}
+    <h1 class="display-3 text-light">Homecourt Hero</h1>
+        <p>Homecourt Hero seeks to create more engagement with local community basketball. From finding a good time to play, or even pairing likeminded aspiring players with each other - we take takecare of the gameplan for everyone.</p>
+        <p><a class="btn btn-primary btn-lg" href="/weather" role="button">Is now good? &raquo;</a></p>
+{% endblock %}
+
+{% block main %}
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Weather report</h2>
+        <p>For outdoor hoopers, get the gameplan on the weather before venturing out.</p>
+        <p><a class="btn btn-secondary" href="/weather" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Community noticeboard</h2>
+          <p>Find like minded players eager to play. </p>
+          <p><a class="btn btn-secondary" href="/noticeboard" role="button">View details &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+      <h2>Notice for CS50 Staff</h2>
+        <p>Appreciation for one of the best online education courses available.</p>
+        <p><a class="btn btn-secondary" href="/thankyou" role="button">View details &raquo;</a></p>
+    </div>
+  </div>
+
+{% endblock %}
